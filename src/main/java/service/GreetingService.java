@@ -42,9 +42,15 @@ public class GreetingService {
         return list;
     }
 
-    public Greeting editData(Integer id, String content) {
+    public Greeting editDataById(Integer id, String content) {
         Greeting newGreeting=new Greeting(id,String.format(template,content));
         repo.save(newGreeting);
         return newGreeting;
     }
+
+    public String deleteDataById(Integer id) {
+        repo.deleteById(id);
+        return "Greeting message having id "+id+", got deleted";
+    }
 }
+
